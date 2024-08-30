@@ -12,7 +12,7 @@ export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
 
-  dummyTasks = [
+  Tasks = [
     {
       id: 't1',
       userId: 'u1',
@@ -46,6 +46,10 @@ export class TasksComponent {
   ];
 
   get selectedUsertasks() {
-    return this.dummyTasks.filter((task) => task.userId === this.userId);
+    return this.Tasks.filter((task) => task.userId === this.userId);
+  }
+
+  onCompletedTask(taskId: string) {
+    this.Tasks = this.Tasks.filter((task) => task.id !== taskId);
   }
 }
